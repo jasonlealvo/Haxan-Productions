@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* grain */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +42,6 @@
       z-index: 999;
     }
 
-    /* ── TYPE ───────────────────────────────────────────────────── */
     h1, h2, h3 { font-family: 'Metamorphous', serif; letter-spacing: 0.03em; line-height: 1.1; }
 
     .label {
@@ -59,7 +57,6 @@
 
     em { font-style: italic; color: var(--red); font-weight: 300; }
 
-    /* ── NAV ────────────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -98,7 +95,6 @@
     }
     .nav-links a:hover { color: var(--red); }
 
-    /* ── HERO ───────────────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -121,7 +117,7 @@
     .hero-logo {
       width: 400px; height: 400px;
       object-fit: contain;
-      mix-blend-mode: screen;
+      mix-blend-mode: lighten;
       margin-bottom: 2.5rem;
       position: relative; z-index: 1;
       animation: fadeInDown 0.9s ease both;
@@ -175,14 +171,12 @@
     }
     .btn:hover { background: transparent; color: var(--red); box-shadow: 0 0 30px var(--red-glow); }
 
-    /* ── DIVIDER ────────────────────────────────────────────────── */
     .divider {
       width: 100%; height: 1px;
       background: linear-gradient(90deg, transparent, var(--red), transparent);
       opacity: 0.4;
     }
 
-    /* ── SERVICES ───────────────────────────────────────────────── */
     #services {
       padding: 6rem 4rem;
       max-width: 1200px;
@@ -206,7 +200,6 @@
       margin-top: 1.5rem;
     }
 
-    /* accordion hint */
     .acc-hint {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.68rem;
@@ -218,7 +211,6 @@
       opacity: 0.6;
     }
 
-    /* accordion items */
     .acc-item { border-top: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
     .acc-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
 
@@ -262,10 +254,8 @@
       transition: max-height 0.4s ease, padding 0.3s ease;
     }
     .acc-item.open .acc-panel { max-height: 200px; padding-bottom: 1.25rem; }
-
     .acc-panel iframe { display: block; border: none; }
 
-    /* ── ABOUT ──────────────────────────────────────────────────── */
     #about {
       padding: 6rem 4rem;
       max-width: 1200px;
@@ -305,7 +295,6 @@
       margin-bottom: 1.25rem;
     }
 
-    /* ── CONTACT ────────────────────────────────────────────────── */
     #contact {
       padding: 8rem 4rem;
       text-align: center;
@@ -340,7 +329,6 @@
       margin-top: 2rem;
     }
 
-    /* ── FOOTER ─────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 4rem;
@@ -358,14 +346,12 @@
     footer a { color: rgba(153,153,153,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--red); }
 
-    /* ── ANIMATIONS ─────────────────────────────────────────────── */
     @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fadeInUp   { from { opacity:0; transform:translateY(20px);  } to { opacity:1; transform:translateY(0); } }
 
     .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* ── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1.25rem 2rem; }
       .nav-links { gap: 1.5rem; }
@@ -383,7 +369,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">Häxan Productions</a>
     <ul class="nav-links">
@@ -394,9 +379,8 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
-    <img src="logo.webp" alt="Häxan Productions" class="hero-logo">
+    <img src="logo.png" alt="Häxan Productions" class="hero-logo">
     <h1 class="hero-brand">Häxan <span>Productions</span></h1>
     <p class="hero-sub">Voiceover</p>
     <p class="hero-tagline">Hit play. You'll know.</p>
@@ -405,7 +389,6 @@
 
   <div class="divider"></div>
 
-  <!-- SERVICES -->
   <div id="services">
     <div class="services-grid">
 
@@ -419,10 +402,10 @@
       <div class="reveal">
         <p class="acc-hint">Click any service to hear the demo</p>
 
-        <!-- CHARACTER & DARK NARRATION -->
+        <!-- 1. HORROR & DARK NARRATION — swap track ID when dedicated recording is ready -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Character &amp; Dark Narration</span>
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Horror &amp; Dark Narration</span>
             <span class="acc-icon">+</span>
           </button>
           <div class="acc-panel">
@@ -431,7 +414,19 @@
           </div>
         </div>
 
-        <!-- AUDIOBOOK / NARRATION -->
+        <!-- 2. CHARACTER WORK -->
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggle(this)">
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Character Work</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-panel">
+            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+          </div>
+        </div>
+
+        <!-- 3. AUDIOBOOK & LONG-FORM -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
             <span class="acc-btn-left"><span class="acc-diamond"></span>Audiobook &amp; Long-Form Narration</span>
@@ -443,10 +438,10 @@
           </div>
         </div>
 
-        <!-- COMMERCIAL -->
+        <!-- 4. PROMO, RADIO & ANNOUNCER — swap track ID when dedicated recording is ready -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Commercial &amp; Promo</span>
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Promo, Radio &amp; Announcer</span>
             <span class="acc-icon">+</span>
           </button>
           <div class="acc-panel">
@@ -455,40 +450,15 @@
           </div>
         </div>
 
-        <!-- CORPORATE -->
+        <!-- 5. CORPORATE & TRAINING — still available, not the focus -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Corporate Narration &amp; Training</span>
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Corporate &amp; Training</span>
             <span class="acc-icon">+</span>
           </button>
           <div class="acc-panel">
             <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319570767&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-
-        <!-- eLEARNING -->
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>eLearning &amp; Instructional Content</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319565994&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-
-        <!-- IVR -->
-        <!-- NOTE: IVR was using the Character demo track — replace the SoundCloud track ID below with the correct IVR demo when available -->
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>IVR &amp; Phone Systems</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
 
@@ -498,7 +468,6 @@
 
   <div class="divider"></div>
 
-  <!-- ABOUT -->
   <div id="about">
     <div class="about-grid">
 
@@ -519,7 +488,6 @@
 
   <div class="divider"></div>
 
-  <!-- CONTACT -->
   <div id="contact">
     <span class="label" style="text-align:center;">Contact</span>
     <h2><a href="mailto:Jason.Leal.VO@gmail.com" class="contact-link">Let's Work</a></h2>
@@ -527,18 +495,15 @@
     <span class="contact-note">Rates on request &nbsp;·&nbsp; PayPal accepted &nbsp;·&nbsp; Fast response</span>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Häxan Productions. All rights reserved.</p>
     <p>California &nbsp;·&nbsp; <a href="mailto:Jason.Leal.VO@gmail.com">Jason.Leal.VO@gmail.com</a></p>
   </footer>
 
   <script>
-    // Sticky nav
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -549,7 +514,6 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Accordion — one open at a time
     function toggle(btn) {
       const item = btn.closest('.acc-item');
       const isOpen = item.classList.contains('open');
