@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jason Leal — Professional male voiceover. Audiobooks, narration, character work, corporate, eLearning, IVR. Broadcast-quality studio, California.">
-  <title>Jason Leal | Professional Male Voiceover | Häxan Productions | California</title>
+  <meta name="description" content="Jason Leal — Dark narration, horror audiobooks, character work, indie game VO, and more. Broadcast-quality studio. Häxan Productions, California.">
+  <title>Jason Leal | Dark Narration & Character VO | Häxan Productions | California</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -119,9 +119,9 @@
       pointer-events: none;
     }
     .hero-logo {
-      width: 200px; height: 200px;
+      width: 400px; height: 400px;
       object-fit: contain;
-      mix-blend-mode: lighten;
+      mix-blend-mode: screen;
       margin-bottom: 2.5rem;
       position: relative; z-index: 1;
       animation: fadeInDown 0.9s ease both;
@@ -277,7 +277,10 @@
       gap: 5rem;
       align-items: center;
     }
-    .photo-wrap { position: relative; }
+    .photo-wrap {
+      position: relative;
+      max-width: 260px;
+    }
     .photo-wrap img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -285,15 +288,6 @@
       object-position: center top;
       display: block;
       filter: grayscale(20%) contrast(1.05);
-    }
-    .photo-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: -12px; right: -12px;
-      width: 60%; height: 60%;
-      border: 2px solid var(--red);
-      pointer-events: none;
-      opacity: 0.4;
     }
     .about-text h2 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); margin-bottom: 2rem; }
     .about-text .lead {
@@ -378,10 +372,13 @@
       #services, #about, #contact { padding: 4rem 2rem; }
       .services-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .photo-wrap { max-width: 320px; }
+      .photo-wrap { max-width: 220px; }
       footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
     }
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-logo { width: 260px; height: 260px; }
+    }
   </style>
 </head>
 <body>
@@ -422,6 +419,18 @@
       <div class="reveal">
         <p class="acc-hint">Click any service to hear the demo</p>
 
+        <!-- CHARACTER & DARK NARRATION -->
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggle(this)">
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Character &amp; Dark Narration</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-panel">
+            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+          </div>
+        </div>
+
         <!-- AUDIOBOOK / NARRATION -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
@@ -434,16 +443,15 @@
           </div>
         </div>
 
-        <!-- CHARACTER -->
+        <!-- COMMERCIAL -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Character &amp; Dark Narration</span>
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Commercial &amp; Promo</span>
             <span class="acc-icon">+</span>
           </button>
           <div class="acc-panel">
-            <!-- NOTE: update this URL with the correct Character demo embed from SoundCloud -->
             <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568277&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
 
@@ -472,6 +480,7 @@
         </div>
 
         <!-- IVR -->
+        <!-- NOTE: IVR was using the Character demo track — replace the SoundCloud track ID below with the correct IVR demo when available -->
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
             <span class="acc-btn-left"><span class="acc-diamond"></span>IVR &amp; Phone Systems</span>
@@ -480,18 +489,6 @@
           <div class="acc-panel">
             <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-
-        <!-- COMMERCIAL -->
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Commercial &amp; Promo</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568277&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
 
@@ -513,8 +510,8 @@
         <span class="label">About</span>
         <h2>Who's in<br>the booth</h2>
         <p class="lead">I'm Jason. Doing voiceover out of my treated studio in California — <em>full time, Monday through Friday.</em></p>
-        <p>Dedicated to delivering the best takes possible, on time, in the right format, at the right specs. That part matters as much as the read itself.</p>
-        <p>I've spent a good majority of my life skateboarding and have traded broken bones and boards for broken strings and long recording sessions.</p>
+        <p>I've been in metal bands most of my life — frontman, guitar, the whole thing. I've spent 26 years on a skateboard. Horror, dark fiction, underground culture — this is the world I actually live in, not a character I put on for the mic.</p>
+        <p>That background is what you hear in the booth. Dedicated to delivering the best takes possible, on time, in the right format, at the right specs. That part matters as much as the read itself.</p>
       </div>
 
     </div>
