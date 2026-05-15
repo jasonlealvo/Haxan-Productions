@@ -110,15 +110,15 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
-      width: 600px; height: 600px;
+      width: 700px; height: 700px;
       background: radial-gradient(ellipse, var(--red-glow) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-logo {
-      width: 400px; height: 400px;
+      width: 600px; height: 600px;
       object-fit: contain;
       mix-blend-mode: lighten;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       position: relative; z-index: 1;
       animation: fadeInDown 0.9s ease both;
     }
@@ -375,7 +375,7 @@
     }
     @media (max-width: 600px) {
       .nav-links { display: none; }
-      .hero-logo { width: 260px; height: 260px; }
+      .hero-logo { width: 320px; height: 320px; }
     }
   </style>
 </head>
@@ -416,6 +416,17 @@
 
         <div class="acc-item">
           <button class="acc-btn" onclick="toggle(this)">
+            <span class="acc-btn-left"><span class="acc-diamond"></span>Audiobook &amp; Long-Form Narration</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-panel">
+            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319567545&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" onclick="toggle(this)">
             <span class="acc-btn-left"><span class="acc-diamond"></span>Horror &amp; Dark Narration</span>
             <span class="acc-icon">+</span>
           </button>
@@ -433,17 +444,6 @@
           <div class="acc-panel">
             <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568463&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Audiobook &amp; Long-Form Narration</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319567545&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
           </div>
         </div>
 
