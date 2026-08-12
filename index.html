@@ -396,8 +396,15 @@
     <h1 class="hero-brand">Häxan <span>Productions</span></h1>
     <p class="hero-sub">Voiceover</p>
     <p class="hero-tagline">Hit play. You'll know.</p>
-    <a href="#services" class="btn">Hear the Work</a>
-  </section>
+<div style="display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center; position: relative;">
+  <a href="#services" class="btn">Hear the Work</a>
+  <div style="position: relative;">
+    <button class="btn" onclick="toggleBuyMenu()" style="cursor: pointer;">Buy the Work</button>
+    <div id="buy-menu" style="display: none; position: absolute; top: calc(100% + 0.75rem); left: 50%; transform: translateX(-50%); background: var(--card); border: 1px solid var(--border); padding: 1rem 1.5rem; white-space: nowrap; z-index: 10;">
+      <a href="https://www.amazon.com/Audible-Music-Industry-Toolkit-2024/dp/B0HDR1D3PF/ref=sr_1_1?crid=3UWYK0JCK8J1J&dib=eyJ2IjoiMSJ9.R_-S4q9B_uQXOCq1H8FIWeAGkmhwKMnFqWnue-hGng0tEantoFNdLeRYj6SwKF4EO8aQdlkjEW4WC94E5aWUv8sA8cO21TP6uPzT2jOjcvrYmFd9Ze4ejm7K6qvq8KteB3IvXY0WMhJEsDXfViuobF_wWccdKbzG9qFIxME5qOmV1uZs_oBWdD7hFsQVLZyOODvTV2liGFbN5PL-S-C6oeNFIUPssiwKN7lonxTT95Q.aB_1TrgkQ6UQekolZAMFgL1xWGEey3Xja2q24JGHa0M&dib_tag=se&keywords=music+industry+toolkit+2024&qid=1786496971&sprefix=music+industry+toolkit+2024%2Caps%2C185&sr=8-1" target="_blank" rel="noopener" style="color: var(--red); text-decoration: underline; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em;">Music Industry Toolkit 2024</a>
+    </div>
+  </div>
+</div>  </section>
 
   <div class="divider"></div>
 
@@ -451,17 +458,6 @@
           <div class="acc-panel">
             <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319570767&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Buy the Work</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <p style="padding: 0 0 1.25rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em;">
-              <a href="https://www.amazon.com/Audible-Music-Industry-Toolkit-2024/dp/B0HDR1D3PF/ref=sr_1_1?crid=3UWYK0JCK8J1J&dib=eyJ2IjoiMSJ9.R_-S4q9B_uQXOCq1H8FIWeAGkmhwKMnFqWnue-hGng0tEantoFNdLeRYj6SwKF4EO8aQdlkjEW4WC94E5aWUv8sA8cO21TP6uPzT2jOjcvrYmFd9Ze4ejm7K6qvq8KteB3IvXY0WMhJEsDXfViuobF_wWccdKbzG9qFIxME5qOmV1uZs_oBWdD7hFsQVLZyOODvTV2liGFbN5PL-S-C6oeNFIUPssiwKN7lonxTT95Q.aB_1TrgkQ6UQekolZAMFgL1xWGEey3Xja2q24JGHa0M&dib_tag=se&keywords=music+industry+toolkit+2024&qid=1786496971&sprefix=music+industry+toolkit+2024%2Caps%2C185&sr=8-1" target="_blank" rel="noopener" style="color: var(--red); text-decoration: underline;">Music Industry Toolkit 2024</a>
-            </p>
           </div>
         </div>
       </div>
@@ -524,6 +520,12 @@
       document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
+    function toggleBuyMenu() {
+  const menu = document.getElementById('buy-menu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggle(btn) {
   </script>
 
 </body>
