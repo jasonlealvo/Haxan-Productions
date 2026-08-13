@@ -490,7 +490,7 @@
 
   <div id="contact">
     <span class="label" style="text-align:center;">Contact</span>
-    <h2><a href="mailto:Jason.leal.vo@gmail.com" class="contact-link">Let's Work</a></h2>
+    <h2><a href="#" onclick="openContact(); return false;" class="contact-link">Let's Work</a></h2>
     <p>Tell me what you need.</p>
     <a href="mailto:Jason.leal.vo@gmail.com" class="contact-email">Jason.leal.vo@gmail.com</a>
     <span class="contact-note">Rates on request &nbsp;·&nbsp; PayPal accepted &nbsp;·&nbsp; Fast response</span>
@@ -501,7 +501,13 @@
     <p>California &nbsp;·&nbsp; <a href="mailto:Jason.leal.vo@gmail.com">Jason.leal.vo@gmail.com</a></p>
   </footer>
 
-  <script>
+  <script> 
+    function openContact() {
+  const email = "Jason.Leal.VO@gmail.com";
+  const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email;
+  window.open(gmailUrl, "_blank");
+}
+    
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
 
