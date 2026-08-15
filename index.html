@@ -433,51 +433,271 @@
         <p class="gear-line">RØDE NT1 &nbsp;·&nbsp; Mackie ProFX16 &nbsp;·&nbsp; Logic Pro</p>
       </div>
 
-      <div class="reveal">
-        <p class="acc-hint">Click any service to hear the demo</p>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Audiobook &amp; Long-Form Narration</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319567545&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Character Work</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319569924&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Promo, Radio &amp; Announcer</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319568277&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" onclick="toggle(this)">
-            <span class="acc-btn-left"><span class="acc-diamond"></span>Corporate &amp; Training</span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-panel">
-            <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2319570767&color=%23c41e1e&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          </div>
-        </div>
-      </div>
+<div class="reveal">
+<style>
+  .deck-wrap {
+    max-width: 460px;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .reel-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 666 / 486;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px var(--border);
+  }
+  .reel-player img.deck-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .reel-player .reel-img {
+    position: absolute;
+    transform-origin: 50% 50%;
+    pointer-events: none;
+  }
+  .reel-player .reel-left  { width: 31.231%; left: 12.538%; top: 6.481%; }
+  .reel-player .reel-right { width: 31.832%; left: 54.429%; top: 5.864%; }
+  .reel-player.playing .reel-img { animation: reel-spin 2.4s linear infinite; }
+  @keyframes reel-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .deck-controls {
+    padding: 0.85rem 0.1rem 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .deck-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.35rem;
+  }
+  .deck-track {
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+  }
+  .deck-progress {
+    height: 100%; width: 0%;
+    background: var(--red);
+    border-radius: 2px;
+  }
+  .deck-time {
+    display: flex; justify-content: space-between;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .deck-menu { margin-top: 0.25rem; }
+  .deck-menu-hint {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0.85rem 0 0.5rem;
+  }
+  .deck-track-item {
+    width: 100%;
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.25rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+  .deck-track-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .deck-track-item:hover { color: var(--red); }
+  .deck-track-item.active { color: var(--red); }
+  .deck-track-item .diamond {
+    width: 6px; height: 6px;
+    background: var(--red);
+    flex-shrink: 0;
+    transform: rotate(45deg);
+    margin-right: 1rem;
+  }
+  .deck-track-item .track-left { display: flex; align-items: center; }
+  .deck-track-item .track-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s;
+  }
+  .deck-track-item .track-icon:hover { box-shadow: 0 0 14px var(--red-glow); }
+  .deck-track-item .track-icon svg { width: 11px; height: 11px; fill: var(--black); }
+  .deck-track-item .track-icon .icon-pause { display: none; }
+  .deck-track-item.playing .track-icon .icon-play { display: none; }
+  .deck-track-item.playing .track-icon .icon-pause { display: block; }
+</style>
+
+<div class="deck-wrap">
+  <div class="reel-player" id="reelPlayer">
+    <img class="deck-bg" src="assets/teac-a2300sx.png" alt="TEAC A-2300SX reel-to-reel">
+    <img class="reel-img reel-left"  src="assets/reel-left.png"  alt="">
+    <img class="reel-img reel-right" src="assets/reel-right.png" alt="">
+  </div>
+
+  <div class="deck-controls">
+    <div class="deck-label" id="deckLabel">Select a track below</div>
+    <div class="deck-track" onclick="seekDeck(event, this)">
+      <div class="deck-progress" id="deckProgress"></div>
+    </div>
+    <div class="deck-time">
+      <span id="deckCurrent">0:00</span>
+      <span id="deckDuration">0:00</span>
     </div>
   </div>
+
+  <div class="deck-menu">
+    <p class="deck-menu-hint">Click a service to hear the demo</p>
+    <button class="deck-track-item" data-src="audio/audiobook-demo.mp3" data-label="Audiobook & Long-Form Narration" onclick="selectTrack(this)">
+      <span class="track-left"><span class="diamond"></span>Audiobook &amp; Long-Form Narration</span>
+      <span class="track-icon">
+        <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+      </span>
+    </button>
+    <button class="deck-track-item" data-src="audio/character-demo.mp3" data-label="Character Work" onclick="selectTrack(this)">
+      <span class="track-left"><span class="diamond"></span>Character Work</span>
+      <span class="track-icon">
+        <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+      </span>
+    </button>
+    <button class="deck-track-item" data-src="audio/promo-demo.mp3" data-label="Promo, Radio & Announcer" onclick="selectTrack(this)">
+      <span class="track-left"><span class="diamond"></span>Promo, Radio &amp; Announcer</span>
+      <span class="track-icon">
+        <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+      </span>
+    </button>
+    <button class="deck-track-item" data-src="audio/corporate-demo.mp3" data-label="Corporate & Training" onclick="selectTrack(this)">
+      <span class="track-left"><span class="diamond"></span>Corporate &amp; Training</span>
+      <span class="track-icon">
+        <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+      </span>
+    </button>
+  </div>
+</div>
+
+<script>
+  const deckAudio = new Audio();
+  let deckActiveBtn = null;
+
+  function setPlayingUI(isPlaying) {
+    document.getElementById('reelPlayer').classList.toggle('playing', isPlaying);
+    if (deckActiveBtn) deckActiveBtn.classList.toggle('playing', isPlaying);
+  }
+
+  deckAudio.addEventListener('play',  () => setPlayingUI(true));
+  deckAudio.addEventListener('pause', () => setPlayingUI(false));
+
+  deckAudio.addEventListener('loadedmetadata', () => {
+    document.getElementById('deckDuration').textContent = formatDeckTime(deckAudio.duration);
+  });
+  deckAudio.addEventListener('timeupdate', () => {
+    const pct = (deckAudio.currentTime / deckAudio.duration) * 100 || 0;
+    document.getElementById('deckProgress').style.width = pct + '%';
+    document.getElementById('deckCurrent').textContent = formatDeckTime(deckAudio.currentTime);
+  });
+  deckAudio.addEventListener('ended', () => {
+    setPlayingUI(false);
+    document.getElementById('deckProgress').style.width = '0%';
+    document.getElementById('deckCurrent').textContent = '0:00';
+  });
+  deckAudio.addEventListener('error', () => {
+    setPlayingUI(false);
+    if (deckActiveBtn) {
+      document.getElementById('deckLabel').textContent = deckActiveBtn.dataset.label + ' — unavailable';
+    }
+  });
+
+  function playSafely() {
+    const p = deckAudio.play();
+    if (p !== undefined) {
+      p.catch(err => {
+        if (err.name !== 'AbortError') {
+          setPlayingUI(false);
+        }
+      });
+    }
+  }
+
+  function selectTrack(btn) {
+    if (deckActiveBtn === btn) {
+      toggleDeck();
+      return;
+    }
+    if (deckActiveBtn) deckActiveBtn.classList.remove('active', 'playing');
+    btn.classList.add('active');
+    deckActiveBtn = btn;
+
+    document.getElementById('deckLabel').textContent = btn.dataset.label;
+    document.getElementById('deckProgress').style.width = '0%';
+    document.getElementById('deckCurrent').textContent = '0:00';
+
+    deckAudio.pause();
+    deckAudio.src = btn.dataset.src;
+    deckAudio.currentTime = 0;
+    playSafely();
+  }
+
+  function toggleDeck() {
+    if (!deckActiveBtn) return;
+    if (deckAudio.paused) {
+      playSafely();
+    } else {
+      deckAudio.pause();
+    }
+  }
+
+  function seekDeck(e, track) {
+    if (!deckActiveBtn || !isFinite(deckAudio.duration)) return;
+    const rect = track.getBoundingClientRect();
+    const pct = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    deckAudio.currentTime = pct * deckAudio.duration;
+  }
+
+  function formatDeckTime(sec) {
+    if (isNaN(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  }
+</script>
+      </div>
 
     <div class="divider"></div>
 
