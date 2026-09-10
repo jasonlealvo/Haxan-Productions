@@ -298,9 +298,25 @@
         <p class="book-byline">By S. Majid &middot; Narrated by Jason Leal</p>
         <a href="https://www.amazon.com/Salman-Khan-Formula-Stardom-Loyalty/dp/B0HHPF7VKQ" target="_blank" rel="noopener" class="book-buy">Buy on Amazon / Audible</a>
 
-        <p class="excerpt-label">Excerpt coming soon</p>
+        <p class="excerpt-label">Listen to an excerpt</p>
+        <div class="excerpt-player" data-src="audio/salman-khan-formula-excerpt.mp3">
+          <button class="excerpt-btn" onclick="toggleExcerpt(this)">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+          </button>
+          <div class="excerpt-progress-wrap">
+            <div class="excerpt-track" onclick="seekExcerpt(event, this)">
+              <div class="excerpt-progress"></div>
+            </div>
+            <div class="excerpt-time">
+              <span class="excerpt-current">0:00</span>
+              <span class="excerpt-duration">0:00</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
 
     <!-- Add future books as new .book-row blocks, following the same pattern -->
 
